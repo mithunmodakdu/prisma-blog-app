@@ -15,4 +15,39 @@ datasource db {
 
 model User {
   id Int @id @default(autoincrement())
+  name String
+  email String
+  password String?
+  role ERole @default(USER)
+  phone String
+  picture String?
+  status EUserStatus @default(ACTIVE)
+  isVerified Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Post {
+  id Int @id @default(autoincrement())
+  title String
+  content String
+  thumbnail String?
+  isFeatured Boolean @default(false)
+  tags String[]
+  views Int @default(0)
+  authorId Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum ERole {
+  SUPER_ADMIN
+  ADMIN
+  USER
+}
+
+enum EUserStatus {
+  ACTIVE
+  INACTIVE
+  BLOCKED
 }
