@@ -9,15 +9,15 @@ app.use(cors()); // Enables Cross-Origin Resource Sharing
 app.use(compression()); // Compresses response bodies for faster delivery
 app.use(express.json()); // Parse incoming JSON requests
 
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: "http://localhost:3000",
+//     credentials: true,
+//   })
+// );
 
 // Default route for testing
-app.get("/", (_req, res) => {
+app.get("/", (req, res) => {
   res.send("API is running on the port 3000");
 });
 
