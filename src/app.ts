@@ -1,6 +1,7 @@
 import compression from "compression";
 import cors from "cors";
 import express from "express";
+import { UserRoutes } from "./modules/user/user.routes";
 
 const app = express();
 
@@ -16,9 +17,11 @@ app.use(express.json()); // Parse incoming JSON requests
 //   })
 // );
 
+app.use("/api/v1/users", UserRoutes)
+
 // Default route for testing
 app.get("/", (req, res) => {
-  res.send("API is running on the port 3000");
+  res.send(`Prisma Blog App Server is running on the port ${process.env.PORT} `);
 });
 
 
